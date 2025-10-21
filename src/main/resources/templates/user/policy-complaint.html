@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{user/layout-user}">
+
+<head>
+    <title>Chính sách xử lý khiếu nại</title>
+    <link rel="stylesheet" th:href="@{/css/policy-pages.css}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <section class="container p-t-20 p-b-60">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    <div th:replace="user/fragments/policy-sidebar :: policySidebar"></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="policy-content">
+                        <h1>Chính sách xử lý khiếu nại</h1>
+                        <hr />
+
+                        <p class="lead">Chúng tôi tiếp nhận mọi phản ánh, khiếu nại liên quan tới sản phẩm, dịch vụ và
+                            giao nhận.
+                            Mục tiêu: phản hồi nhanh, xử lý công bằng và bảo vệ quyền lợi hợp lý cho khách hàng.</p>
+
+                        <div class="contact-card">
+                            <div class="item">
+                                <div class="muted">Hotline hỗ trợ</div>
+                                <div class="hotline">0364 023 659</div>
+                            </div>
+                            <div class="item">
+                                <div class="muted">Email</div>
+                                <div><a href="mailto:haihaupy123@gmail.com">haihaupy123@gmail.com</a></div>
+                            </div>
+                            <div class="item">
+                                <div class="muted">Kênh khác</div>
+                                <div>Fanpage / Tin nhắn trực tiếp tại cửa hàng</div>
+                            </div>
+                        </div>
+
+                        <h3 class="section-title" style="font-size:18px;">1. Cách thức gửi khiếu nại</h3>
+                        <ul>
+                            <li>Gửi email kèm ảnh/video tới địa chỉ hỗ trợ.</li>
+                            <li>Gọi hotline để được hướng dẫn nhanh và ghi nhận sự cố.</li>
+                            <li>Liên hệ trực tiếp qua fanpage hoặc tại cửa hàng để được hỗ trợ.</li>
+                        </ul>
+
+                        <h3 class="section-title" style="font-size:18px;">2. Thông tin cần cung cấp</h3>
+                        <ul>
+                            <li>Số đơn hàng / mã hoá đơn (nếu có).</li>
+                            <li>Hình ảnh, video mô tả rõ hiện trạng, vị trí lỗi và thời điểm phát hiện.</li>
+                            <li>Mô tả ngắn gọn vấn đề và kết quả mong muốn (đổi hàng / hoàn tiền / sửa chữa).</li>
+                            <li>Họ tên, số điện thoại và email liên hệ.</li>
+                        </ul>
+
+                        <h3 class="section-title" style="font-size:18px;">3. Quy trình xử lý (thời gian tham khảo)</h3>
+                        <ul class="timeline">
+                            <li><strong>24 giờ:</strong> Xác nhận đã tiếp nhận khiếu nại và hướng dẫn khách cung cấp
+                                thông tin bổ sung.</li>
+                            <li><strong>3 ngày:</strong> Thu thập chứng cứ và tiến hành kiểm tra ban đầu.</li>
+                            <li><strong>7 ngày:</strong> Đưa ra phương án giải quyết khi đã đủ thông tin (đổi hàng, sửa
+                                chữa, hoàn tiền, ...).</li>
+                            <li>Trường hợp phức tạp: thời gian xử lý có thể kéo dài hơn; chúng tôi sẽ thông báo lý do và
+                                tiến độ.</li>
+                        </ul>
+
+                        <div class="note">
+                            <strong>Ghi chú:</strong> Thời gian xử lý áp dụng khi khách hàng cung cấp đủ thông tin và
+                            bằng chứng.
+                            Thiếu thông tin có thể làm chậm quá trình giải quyết.
+                        </div>
+
+                        <h3 class="section-title" style="font-size:18px;">4. Cam kết</h3>
+                        <ul>
+                            <li>Xử lý kịp thời, minh bạch và trách nhiệm.</li>
+                            <li>Ưu tiên phương án bảo vệ quyền lợi khách hàng khi lỗi thuộc về công ty hoặc nhà cung
+                                cấp.</li>
+                            <li>Cập nhật tiến độ qua email / điện thoại cho khách hàng.</li>
+                        </ul>
+
+                        <p class="p-t-12">Hỗ trợ gấp: gọi <strong>0364 023 659</strong> hoặc gửi email tới <a
+                                href="mailto:haihaupy123@gmail.com">haihaupy123@gmail.com</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</body>
+
+</html>

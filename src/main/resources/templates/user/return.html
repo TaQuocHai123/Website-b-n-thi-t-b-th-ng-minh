@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{user/layout-user.html}">
+<head>
+    <title>Trang Đổi Trả</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container" style="max-width: 500px; margin-top: 40px;">
+            <h2 class="text-center mb-4" style="font-weight: bold;">Yêu cầu đổi trả sản phẩm</h2>
+            <form th:action="@{/user/return}" th:object="${billReturnForm}" method="post" class="p-4 shadow rounded bg-white">
+                <div class="form-group mb-3">
+                    <label for="billId" class="form-label">Mã đơn hàng:</label>
+                    <input type="text" th:field="*{billId}" class="form-control" id="billId" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="reason" class="form-label">Lý do đổi trả:</label>
+                    <textarea th:field="*{reason}" class="form-control" id="reason" rows="3" required></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="shipping" class="form-label">Giao hàng đổi trả:</label>
+                    <select th:field="*{shipping}" class="form-select" id="shipping">
+                        <option th:value="true">Có</option>
+                        <option th:value="false">Không</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Gửi yêu cầu</button>
+            </form>
+            <div th:if="${message}" class="mt-3 text-center">
+                <p th:text="${message}" style="color:green;"></p>
+            </div>
+            <div th:if="${error}" class="mt-3 text-center">
+                <p th:text="${error}" style="color:red;"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

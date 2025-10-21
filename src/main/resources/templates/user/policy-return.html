@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{user/layout-user}">
+
+<head>
+    <title>Chính sách đổi trả & bảo hành</title>
+    <link rel="stylesheet" th:href="@{/css/policy-pages.css}" />
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <section class="container p-t-20 p-b-60">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    <div th:replace="user/fragments/policy-sidebar :: policySidebar"></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="policy-content">
+                        <h1 style="font-weight:700;">Chính sách đổi trả & bảo hành</h1>
+                        <hr />
+
+                        <p>Chúng tôi mong muốn khách hàng nhận được sản phẩm đúng chất lượng và dịch vụ tốt nhất. Dưới
+                            đây là
+                            các điều khoản đổi trả và bảo hành áp dụng:</p>
+
+                        <h3 style="font-weight:700;font-size:18px;">1. Điều kiện đổi trả</h3>
+                        <ul style="margin-top: 8px;">
+                            <li>Sản phẩm còn nguyên bao bì, tem mác, không bị trầy xước, móp méo do phía khách hàng.
+                            </li>
+                            <li>Có đầy đủ giấy tờ kèm theo: hoá đơn, phiếu giao hàng, phiếu bảo hành (nếu có).</li>
+                            <li>Thời hạn đổi trả trong vòng 3 ngày kể từ khi nhận hàng (tuỳ theo loại sản phẩm có thể
+                                khác
+                                nhau).</li>
+                        </ul>
+
+                        <h3 style="font-weight:700;font-size:18px;">2. Trường hợp được đổi trả</h3>
+                        <ul style="margin-top: 8px;">
+                            <li>Sản phẩm bị lỗi kỹ thuật do nhà sản xuất.</li>
+                            <li>Sản phẩm bị hư hỏng trong quá trình vận chuyển mà khách hàng chứng minh được.</li>
+                            <li>Sản phẩm giao không đúng mẫu mã, màu sắc, kích thước so với đơn đặt hàng.</li>
+                        </ul>
+
+                        <h3 style="font-weight:700;font-size:18px;">3. Quy trình bảo hành</h3>
+                        <ul style="margin-top: 8px;">
+                            <li>Khách hàng gửi yêu cầu bảo hành kèm hình ảnh và mô tả lỗi tới hotline/email hỗ trợ.</li>
+                            <li>Công ty tiếp nhận, kiểm tra và liên hệ khách hàng trong vòng 24-72 giờ để hướng dẫn.
+                            </li>
+                            <li>Tuỳ theo tình trạng: sửa chữa, đổi mới hoặc hoàn tiền sẽ được áp dụng theo chính sách
+                                từng sản
+                                phẩm.</li>
+                        </ul>
+
+                        <div class="note">
+                            <strong>Lưu ý:</strong> Sản phẩm hỏng do tác động ngoại lực, sử dụng sai hướng dẫn hoặc do
+                            côn
+                            trùng, môi trường sẽ không thuộc diện bảo hành.
+                        </div>
+
+                        <h3 style="font-weight:700;font-size:18px;">4. Phí vận chuyển đổi trả</h3>
+                        <ul style="margin-top: 8px;">
+                            <li>Đổi trả do lỗi của công ty: miễn phí vận chuyển đổi trả.</li>
+                            <li>Đổi trả theo yêu cầu khách hàng (không phải lỗi): khách hàng chịu phí vận chuyển.</li>
+                        </ul>
+
+                        <p>Nếu cần hỗ trợ thêm, vui lòng liên hệ hotline: <strong>0364 023 659</strong> hoặc email: <a
+                                href="mailto:haihaupy123@gmail.com">haihaupy123@gmail.com</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

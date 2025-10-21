@@ -1,0 +1,86 @@
+/* Styles for policy and guide pages */
+.guide-content {
+  max-width: 780px;
+  margin: 6px auto 40px auto;
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14.5px;
+  color: #222;
+  line-height: 1.5;
+}
+.guide-content h1 { font-size: 22px; margin: 4px 0 10px 0; color: #1f7f2f; font-weight:700 }
+.guide-content h3, .guide-content h4 { font-weight:700 }
+.guide-content a { color: #1f7f2f }
+
+.policy-content {
+  max-width: 720px; /* narrower column for cleaner reading */
+  margin: 18px auto 48px auto;
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  color: #222;
+  line-height: 1.65;
+}
+.policy-content h1 {
+  color: #1f7f2f;
+  font-weight: 800;
+  font-size: 26px;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.2px;
+}
+.policy-content .section-title {
+  color: #333;
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.policy-content hr { border: none; border-top: 1px solid #eee; margin: 8px 0 14px 0 }
+.policy-content p { margin: 8px 0; color: #444 }
+.policy-content .lead { font-size: 15.5px; color: #444; margin-bottom: 12px }
+.policy-content ul, .policy-content ol { margin-left: 24px; margin-bottom: 12px }
+.policy-content li { margin-bottom: 8px }
+.policy-content .bank-info { background: #ffffff; padding: 18px; border-radius: 8px; margin-top: 12px; border:1px solid #ececec; box-shadow:0 6px 18px rgba(15,15,15,0.04) }
+.policy-content .bank-info b { display:block; margin-bottom:6px }
+.policy-content .note { background:#fff8e6; border-left:4px solid #ffd54f; padding:10px; margin:12px 0 }
+.policy-content a { color: #1f7f2f; text-decoration: none; }
+.policy-content a:hover { text-decoration: underline }
+
+/* Normalize box-sizing for policy content children to avoid layout shifts */
+.policy-content *, .policy-content *:before, .policy-content *:after { box-sizing: border-box }
+
+/* Reduce variation in bold inline blocks to avoid jagged lines */
+.policy-content li strong { font-weight:700; display:inline }
+
+/* Make bank-info inner sections consistent */
+.policy-content .bank-info hr { margin:12px 0; border-color:#f1f1f1 }
+
+@media (max-width: 768px) {
+  .policy-content { padding: 0 14px }
+}
+
+/* Sidebar styles for policy pages */
+.policy-sidebar .box { background: #fff; border: 1px solid #ececec; border-radius: 6px; padding: 0; }
+.policy-sidebar .box-title { background:#1f7f2f; color:#fff; padding:10px 12px; margin:0; font-weight:700; font-size:15px; border-radius:6px 6px 0 0 }
+.policy-sidebar .policy-menu { list-style:none; margin:0; padding:8px 0 }
+.policy-sidebar .policy-menu li { border-top:1px solid #f3f3f3 }
+.policy-sidebar .policy-menu li:first-child { border-top:none }
+.policy-sidebar .policy-menu a { display:block; padding:10px 12px; color:#333; text-decoration:none }
+.policy-sidebar .policy-menu a:hover { background:#f7f7f7; color:#1f7f2f }
+.policy-sidebar .policy-menu a.active { background:#eaf7ef; color:#1f7f2f; font-weight:700 }
+
+@media (max-width: 991px) {
+  .policy-sidebar { display:none }
+}
+
+@media (max-width: 768px) {
+  .policy-content { padding: 0 14px; font-size: 15px }
+}
+
+/* Small components used by complaint page */
+.contact-card { display:flex; gap:18px; align-items:flex-start; background:#fff; border:1px solid #f1f1f1; padding:12px; border-radius:6px; margin:12px 0 }
+.contact-card .item { min-width:180px }
+.contact-card .muted { color:#777; font-size:13px }
+.contact-card .hotline { color:#1f7f2f; font-weight:700; font-size:18px }
+
+.timeline { list-style:none; padding-left:0 }
+.timeline li { margin:10px 0; padding-left:0 }
+.lead { color:#333; margin-bottom:12px }
