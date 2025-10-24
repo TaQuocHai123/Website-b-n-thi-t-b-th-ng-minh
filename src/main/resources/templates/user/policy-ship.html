@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{user/layout-user}">
+
+<head>
+    <title>Chính sách vận chuyển</title>
+    <link rel="stylesheet" th:href="@{/css/policy-pages.css}" />
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <section class="container p-t-20 p-b-60">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    <div th:replace="user/fragments/policy-sidebar :: policySidebar"></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="policy-content">
+                        <h1>Chính sách vận chuyển</h1>
+                        <hr />
+
+                        <p>Nhằm đem lại sự tiện lợi, tiết kiệm chi phí tối đa cho việc mua sản phẩm của chúng tôi. Công
+                            ty chúng
+                            tôi đưa ra chính sách vận chuyển hàng hóa được chúng tôi cung cấp như sau:</p>
+                        <p style="font-size:18px;"><strong>Vận chuyển miễn phí (áp dụng với một số sản phẩm đồ nội
+                                thất)</strong></p>
+                        <ul>
+
+                            <li>Vận chuyển miễn phí đơn hàng với tổng giá trị từ 5 triệu trở lên trong bán kính 10km
+                                tính từ cửa
+                                hàng của chúng tôi.</li>
+                            <li>Ngoài điều kiện trên Quý khách hàng tham khảo chính sách vận chuyển có tính phí.</li>
+                        </ul>
+
+                        <p style="font-size:18px;"><strong>Vận chuyển có tính phí</strong></p>
+                        <ul>
+                            <li>Phí vận chuyển đối với SPTI: Giao hàng trong nội thành và ngoại tỉnh thỏa thuận với
+                                khách về
+                                phương thức vận chuyển và phí vận chuyển.</li>
+                        </ul>
+
+                        <p style="font-size:18px;"><strong>Chính sách giao hàng</strong></p>
+                        <ul>
+                            <li>Đối với những sản phẩm có sẵn tại kho công ty chúng tôi: Chúng tôi giao hàng trong vòng
+                                1-2 ngày
+                                kể từ khi xác nhận đơn hàng.</li>
+                            <li>Đối với những sản phẩm không có sẵn phải tiến hành đặt hàng. Công ty sẽ thông báo thời
+                                gian cụ
+                                thể cho khách hàng.</li>
+                            <li>Với các đơn hàng ngoại tỉnh chúng tôi sẽ giao hàng trong vòng 5-7 ngày hoặc tùy theo
+                                thỏa thuận
+                                trực tiếp với khách hàng.</li>
+                            <li>Các trường hợp bất khả kháng thời gian giao hàng có thể kéo dài hơn. Cụ thể công ty sẽ
+                                thông báo
+                                trực tiếp cho khách hàng.</li>
+                        </ul>
+
+                        <p style="font-size:18px;"><strong>Lưu ý</strong></p>
+                        <ul>
+                            <li>Quý khách vui lòng kiểm tra hàng khi nhân viên giao hàng giao tới; và nếu có vấn đề vui
+                                lòng
+                                phản hồi ngay để được hỗ trợ.</li>
+                            <li>Thời gian giao hàng có thể thay đổi tùy theo miền/tỉnh và tình trạng kho.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

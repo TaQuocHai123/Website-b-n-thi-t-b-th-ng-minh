@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{user/layout-user}">
+
+<head>
+    <title>Chính sách thanh toán</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/policy-pages.css}" />
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <section class="container p-t-20 p-b-60">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    <div th:replace="user/fragments/policy-sidebar :: policySidebar"></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="policy-content">
+                        <h1>Chính sách thanh toán</h1>
+                        <hr />
+
+                        <p class="lead">Chúng tôi hỗ trợ nhiều phương thức thanh toán để thuận tiện cho quý khách: COD,
+                            chuyển
+                            khoản ngân hàng, tạm ứng, và thanh toán qua cổng VNPAY.</p>
+
+                        <h3 class="section-title" style="font-size:18px;">Hình thức thanh toán</h3>
+                        <ul>
+                            <li><strong>Thanh toán khi nhận hàng (COD)</strong> — Áp dụng với sản phẩm có sẵn kho và khu
+                                vực hỗ
+                                trợ giao hàng.</li>
+                            <li><strong>Tạm ứng 50% — Thanh toán 50% khi nhận hàng</strong> — Áp dụng cho sản phẩm đặt
+                                hàng theo
+                                kích thước/thiết kế.</li>
+                            <li><strong>Thanh toán trước 100%</strong> — Áp dụng cho đơn hàng ở tỉnh hoặc đơn hàng đặc
+                                thù.</li>
+                        </ul>
+
+                        <h3 class="section-title " style="font-size:18px;">Phương thức</h3>
+                        <ul>
+                            <li><strong>Tiền mặt</strong> — Thanh toán trực tiếp tại cửa hàng hoặc khi nhân viên giao
+                                hàng tới.</li>
+                            <li><strong>Chuyển khoản</strong> — Thông tin tài khoản ngân hàng bên dưới.</li>
+                        </ul>
+
+                        <div class="bank-info" style="margin-left: 80px;">
+                            <b>Chủ tài khoản: Tạ Quốc Hải</b>
+                            <div>Số tài khoản: 0364023659</div>
+                            <div>Ngân hàng: Vietinbank - Chi nhánh Gò Vấp, TP. HCM</div>
+
+                            <hr />
+                            <b>Tài khoản cá nhân (ví dụ)</b>
+                            <div>Số tài khoản: 0364023659</div>
+                            <div>Ngân hàng: Vietinbank - Greenbay</div>
+                        </div>
+
+                        <h3 class="section-title" style="font-size:18px;">Thanh toán online</h3>
+                        <p>Phương thức thanh toán qua <strong>VNPAY</strong> được áp dụng tại hệ thống cửa hàng. Khách
+                            hàng
+                            được hướng dẫn thao tác tại quầy hoặc qua hotline khi cần hỗ trợ.</p>
+
+                        <h3 class="section-title" style="font-size:18px;">Hệ thống cửa hàng</h3>
+                        <ul>
+                            <li>Địa chỉ 1: 364/45/27 Dương Quảng Hàm, Phường 5, Gò Vấp, TP Hồ Chí Minh.</li>
+                            <li>Địa chỉ 2: Phú Yên.</li>
+                        </ul>
+
+                        <h3 class="section-title" style="font-size:18px;">Lưu ý</h3>
+                        <ul>
+                            <li>Giữ lại biên lai hoặc chứng từ chuyển khoản để đối chiếu khi cần hỗ trợ.</li>
+                            <li>Đơn hàng chỉ được xác nhận khi nhận đủ khoản tạm ứng (nếu có) hoặc thanh toán theo yêu
+                                cầu.</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</body>
+
+</html>

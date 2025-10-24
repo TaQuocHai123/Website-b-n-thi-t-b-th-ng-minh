@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{user/layout-user}">
+
+<head>
+    <title>Hướng dẫn đặt hàng</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" th:href="@{/css/policy-pages.css}" />
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <section class="container p-t-40 p-b-80">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    <div th:replace="user/fragments/policy-sidebar :: policySidebar"></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="guide-content">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1 class="stext-301 cl0"
+                                    style="color:#1f7f2f; font-weight:700; font-size:26px; margin:0 0 4px 0; letter-spacing:0.2px;">
+                                    Hướng dẫn đặt hàng
+                                </h1>
+                                <hr style="margin:4px 0;" />
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="p-t-10">
+                                    <h3 style="font-weight:700;font-size: 18px;">1. Mua hàng trực tiếp tại TBTM Hải
+                                        Thịnh</h3>
+                                    <p style="margin-left: 20px;margin-top: 8px;">Quý khách tới tham quan và mua hàng
+                                        trực tiếp tại hệ
+                                        thống cửa hàng của Hải Thịnh
+                                        Store
+                                        tại các địa chỉ sau:</p>
+                                    <ul style="margin-left: 20px;">
+                                        <li><strong>Địa chỉ 1:</strong> 364/45/27 Dương Quảng Hàm, Phường 5, Gò Vấp, TP
+                                            Hồ Chí
+                                            Minh</li>
+                                        <li><strong>Địa chỉ 2:</strong>... </li>
+                                    </ul>
+
+                                    <h3 class="p-t-20" style="font-weight:700;font-size: 18px;">2. Mua hàng qua website:
+                                        <a href="https" style="color:#2e7d32;">https:/</a>
+                                    </h3>
+                                    <p style="margin-left: 20px;margin-top: 8px;">Quý khách có thể mua hàng dễ dàng trên
+                                        website với các
+                                        cách đặt hàng đơn giản như
+                                        sau:
+                                    </p>
+
+                                    <h4 class="p-t-12" style="font-weight:700;font-size: 18px;">Cách 1: MUA NGAY</h4>
+                                    <p style="margin-left: 20px;"><em>Áp dụng khi bạn muốn mua 1 sản phẩm và nhận hàng
+                                            sớm.</em></p>
+                                    <ol style="margin-left: 20px;">
+                                        <li><strong>Bước 1:</strong> Chọn sản phẩm bạn muốn mua.</li>
+                                        <li><strong>Bước 2:</strong> Nhấn nút <em>Mua ngay</em> trên trang sản phẩm.
+                                        </li>
+                                        <li><strong>Bước 3:</strong> Điền đầy đủ thông tin nhận hàng: họ tên, địa chỉ,
+                                            số điện
+                                            thoại, email, ghi chú (nếu có).</li>
+                                        <li><strong>Bước 4:</strong> Xác nhận đơn hàng và chọn phương thức thanh toán.
+                                        </li>
+                                        <li><strong>Bước 5:</strong> Nhân viên của Nội Thất Kỳ Diệu sẽ liên hệ để xác
+                                            nhận thông
+                                            tin trước khi vận chuyển.</li>
+                                        <li><strong>Bước 6:</strong> Chờ nhận hàng và thanh toán theo hướng dẫn (COD,
+                                            chuyển
+                                            khoản hoặc thanh toán online).</li>
+                                    </ol>
+
+                                    <h4 class="p-t-12" style="font-weight:700;font-size: 18px;">Cách 2: THÊM VÀO GIỎ
+                                        HÀNG</h4>
+                                    <p style="margin-left: 20px;"><em>Áp dụng khi bạn muốn mua nhiều sản phẩm hoặc tiếp
+                                            tục duyệt web trước khi
+                                            thanh
+                                            toán.</em></p>
+                                    <ol style="margin-left: 20px;">
+                                        <li><strong>Bước 1:</strong> Chọn sản phẩm và nhấn <em>Thêm vào giỏ</em>.</li>
+                                        <li><strong>Bước 2:</strong> Mở <em>Giỏ hàng</em> để kiểm tra số lượng và tổng
+                                            tiền.
+                                        </li>
+                                        <li><strong>Bước 3:</strong> Nhấn <em>Thanh toán</em> để điền thông tin nhận
+                                            hàng.</li>
+                                        <li><strong>Bước 4:</strong> Chọn phương thức vận chuyển và thanh toán, sau đó
+                                            xác nhận
+                                            đặt hàng.</li>
+                                    </ol>
+
+                                    <h4 class="p-t-12" style="font-weight:700;font-size: 18px;">Quy trình xử lý đơn hàng
+                                    </h4>
+                                    <ul style="margin-left: 20px;margin-top: 8px;">
+                                        <li>Sau khi đặt hàng thành công, hệ thống sẽ gửi email/xác nhận đơn hàng tới
+                                            bạn.</li>
+                                        <li>Nhân viên chăm sóc khách hàng sẽ gọi xác nhận đơn trước khi giao.</li>
+                                        <li>Nếu có thay đổi về thông tin giao nhận, vui lòng liên hệ sớm để tránh chậm
+                                            giao
+                                            hàng.</li>
+                                    </ul>
+
+                                    <h4 class="p-t-12" style="font-weight:700;font-size: 18px;">Lưu ý</h4>
+                                    <ul style="margin-left: 20px;">
+                                        <li>Vui lòng kiểm tra kỹ thông tin nhận hàng (số điện thoại, địa chỉ) trước khi
+                                            xác
+                                            nhận.</li>
+                                        <li>Thời gian giao hàng tùy thuộc khu vực và tình trạng kho hàng.</li>
+                                        <li>Trong trường hợp cần hỗ trợ, liên hệ hotline: <strong>0364023659</strong>
+                                            hoặc
+                                            email: <a href="mailto:haihaupy123@gmail.com">haihaupy123@gmail.com</a>.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+    </div>
+</body>
+
+</html>

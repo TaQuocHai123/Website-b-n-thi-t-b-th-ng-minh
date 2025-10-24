@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lịch sử đổi trả</title>
+    <link rel="stylesheet" th:href="@{/static/css/main.css}" />
+</head>
+<body>
+    <div class="container">
+        <h2>Lịch sử đổi trả</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã đổi trả</th>
+                    <th>Mã đơn hàng</th>
+                    <th>Lý do</th>
+                    <th>Ngày yêu cầu</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="return : ${returns}">
+                    <td th:text="${return.code}"></td>
+                    <td th:text="${return.bill.code}"></td>
+                    <td th:text="${return.returnReason}"></td>
+                    <td th:text="${#dates.format(return.returnDate, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${return.returnStatus}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

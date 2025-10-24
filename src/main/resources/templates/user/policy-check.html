@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{user/layout-user}">
+
+<head>
+    <title>Chính sách kiểm hàng</title>
+    <link rel="stylesheet" th:href="@{/css/policy-pages.css}" />
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <section class="container p-t-20 p-b-60">
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    <div th:replace="user/fragments/policy-sidebar :: policySidebar"></div>
+                </div>
+                <div class="col-md-9">
+                    <div class="policy-content">
+                        <h1>Chính sách kiểm hàng</h1>
+                        <hr />
+
+                        <p style="font-size:18px;"><strong>Đồng kiểm</strong></p>
+                        <ul>
+                            <li>Áp dụng đối với các sản phẩm đồ gỗ nội thất bán lẻ và các sản phẩm tiện ích của Hải
+                                Thịnh Store
+                                (không áp dụng với các đơn hàng dự án cần lắp đặt hoàn thiện tại nhà).</li>
+                            <li>Khách hàng được thoải mái kiểm tra hàng rồi mới thanh toán nhận hàng. Trong trường hợp
+                                khách
+                                hàng không ưng sản phẩm không do lỗi từ phía nhà sản xuất, Quý khách hàng vui lòng thanh
+                                toán
+                                phí ship 2 chiều giúp NTKD.</li>
+                            <li>NTKD hỗ trợ đổi trả hàng miễn ship hoặc nhận hàng trả lại hoàn tiền trong TH sản phẩm bị
+                                lỗi
+                                hoặc khách nhận được sản phẩm không đúng mẫu khách đặt.</li>
+                            <li>Khách hàng lưu ý kiểm tra kỹ sản phẩm trước khi nhận. NTKD không giải quyết khiếu nại
+                                hàng lỗi,
+                                sai mẫu sau thời điểm khách đã nhận hàng từ shipper.</li>
+                        </ul>
+
+                        <p style="font-size:18px;"><strong>Quy trình khiếu nại</strong></p>
+                        <ul>
+                            <li>Ghi nhận khiếu nại trong vòng 24-48 giờ kể từ khi nhận hàng (kèm hình ảnh chứng minh
+                                lỗi, mô tả
+                                chi tiết tình trạng sản phẩm).</li>
+                            <li>NTKD sẽ kiểm tra, thu thập thông tin và liên hệ lại khách hàng để xử lý (đổi hàng, hoàn
+                                tiền
+                                hoặc sửa chữa tuỳ theo từng trường hợp).</li>
+                            <li>Một số sản phẩm do đặc thù vật liệu (gỗ tự nhiên, vải, da) có thể có sai khác về màu
+                                sắc/tone
+                                nhẹ so với mẫu ảnh; đây không được tính là lỗi sản phẩm.</li>
+                        </ul>
+
+                        <p style="font-size:18px;"><strong>Lưu ý</strong></p>
+                        <ul>
+                            <li>Không nhận khiếu nại nếu sản phẩm đã bị hư hỏng do sử dụng sai cách sau khi đã nhận
+                                hàng.</li>
+                            <li>Khách hàng vui lòng giữ lại bao bì, tem mác (nếu có) để thuận lợi cho quy trình đổi trả.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

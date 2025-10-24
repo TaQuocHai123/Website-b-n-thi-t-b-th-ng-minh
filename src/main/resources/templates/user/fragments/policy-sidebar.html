@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!-- Policy sidebar fragment -->
+<div th:fragment="policySidebar">
+    <aside class="policy-sidebar">
+        <div class="box">
+            <h5 class="box-title" style="font-size: 20px;">Chính sách cửa hàng</h5>
+            <ul class="policy-menu">
+                <li><a th:href="@{/guide-order}">Hướng dẫn đặt hàng</a></li>
+                <li><a th:href="@{/policy-check}">Chính sách kiểm hàng</a></li>
+                <li><a th:href="@{/policy-pay}">Chính sách thanh toán</a></li>
+                <li><a th:href="@{/policy-ship}">Chính sách vận chuyển</a></li>
+                <li><a th:href="@{/policy-return}">Đổi trả & Bảo hành</a></li>
+                <li><a th:href="@{/policy-complaint}">Chính sách khiếu nại</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
