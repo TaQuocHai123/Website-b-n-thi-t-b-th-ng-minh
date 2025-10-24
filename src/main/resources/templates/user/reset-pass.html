@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{user/layout-user.html}">
-
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78bffa9fdf22c5270fa57f5073d6383d635b9d88
 <body>
     <div layout:fragment="content">
         <h2 class="ltext-105 txt-center">
@@ -20,20 +22,18 @@
                         <div th:if="${errorMessage}" class="alert alert-danger">
                             <p th:text="${errorMessage}"></p>
                         </div>
-                        <!-- Dev verification code removed from UI after testing -->
-                        <form class="mt-5 px-4 pt-4 pb-6 shadow-sm border" th:action="@{/reset-password}" method="post"
-                            id="login-form">
-
+                        <div th:if="${devVerificationCode}" class="alert alert-info">
+                            <p>Mã xác thực (chỉ hiển thị trong môi trường phát triển): <strong th:text="${devVerificationCode}"></strong></p>
+                        </div>
+                        <form class="mt-5 px-4 pt-4 pb-6 shadow-sm border" th:action="@{/reset-password}" method="post" id="login-form">
                             <div class="form-group">
                                 <label>Mã xác thực</label>
-                                <input type="text" class="form-control" id="verificationCode" name="verificationCode"
-                                    placeholder="Nhập mã xác thực">
+                                <input type="text" class="form-control" id="verificationCode" name="verificationCode" placeholder="Nhập mã xác thực">
                                 <span class="error text-danger text-sm"></span>
                             </div>
                             <div class="form-group">
                                 <label>Mật khẩu mới</label>
-                                <input type="password" class="form-control" id="newPassword" name="newPassword"
-                                    placeholder="Nhập mật khẩu mới">
+                                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Nhập mật khẩu mới">
                                 <span class="error text-danger text-sm"></span>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Đặt lại mật khẩu</button>
@@ -44,5 +44,8 @@
         </section>
     </div>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78bffa9fdf22c5270fa57f5073d6383d635b9d88
 </html>

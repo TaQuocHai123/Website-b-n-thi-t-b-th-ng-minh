@@ -52,17 +52,26 @@ public class AuthController {
     }
 
     @GetMapping("/forgot-pass")
+<<<<<<< HEAD
     public String forgotPass(Model model) {
+=======
+    public String forgotPass(Model model){
+>>>>>>> 78bffa9fdf22c5270fa57f5073d6383d635b9d88
 
         return "user/forgot-pass";
     }
 
     @GetMapping("/register")
+<<<<<<< HEAD
     public String register(Model model, @ModelAttribute("Account") Account account) {
+=======
+    public String register(Model model,@ModelAttribute("Account") Account account){
+>>>>>>> 78bffa9fdf22c5270fa57f5073d6383d635b9d88
         return "user/register";
     }
 
     @PostMapping("/register-save")
+<<<<<<< HEAD
     public String saveregister(Model model, @Validated @ModelAttribute AccountDto accountDto,
             RedirectAttributes redirectAttributes) throws MessagingException {
 
@@ -153,6 +162,84 @@ public class AuthController {
     public String resetPassword(@RequestParam String verificationCode,
             @RequestParam String newPassword,
             RedirectAttributes model) {
+=======
+    public String saveregister(Model model, @Validated @ModelAttribute AccountDto accountDto, RedirectAttributes redirectAttributes) throws MessagingException {
+
+        Account accountByEmail= accountService.findByEmail(accountDto.getEmail());
+
+        //Kiểm tra xem số điện thoại đã có tài khoản chưa
+        Account accountByPhone = accountRepository.findByCustomer_PhoneNumber(accountDto.getPhoneNumber());
+
+        if(accountByEmail !=null ){
+            redirectAttributes.addFlashAttribute("errorMessage","Email đã tồn tại !");
+            return "redirect:/register";
+        }
+        if(accountByPhone != null) {
+            redirectAttributes.addFlashAttribute("errorMessage","Số điện thoại " + accountDto.getPhoneNumber() + " đã được đăng ký!");
+            return "redirect:/register";
+        }
+
+            Account account = new Account();
+            account.setEmail(accountDto.getEmail());
+            Account account1 = accountRepository.findTopByOrderByIdDesc();
+            Long nextCode = (account1 == null) ? 1 : account1.getId() + 1;
+            String accCode = "TK" + String.format("%04d", nextCode);
+            account.setCode(accCode);
+
+            String encoded = passwordEncoder.encode(accountDto.getPassword());
+            account.setPassword(encoded);
+            account.setNonLocked(true);
+            Role role = new Role();
+            role.setId(3L);
+            account.setRole(role);
+            Customer customer = null;
+
+            //Nếu số điện thoại đã tồn tại
+            if(customerRepository.existsByPhoneNumber(accountDto.getPhoneNumber())) {
+                customer = customerRepository.findByPhoneNumber(accountDto.getPhoneNumber());
+                customer.setName(accountDto.getName());
+            }
+            else {
+                customer = new Customer();
+                customer.setName(accountDto.getName());
+                customer.setPhoneNumber(accountDto.getPhoneNumber());
+                Customer customerCurrent = customerRepository.findTopByOrderByIdDesc();
+                Long nextCodeAcc = (customerCurrent == null) ? 1 : customerCurrent.getId() + 1;
+                String productCode = "KH" + String.format("%04d", nextCodeAcc);
+                customer.setCode(productCode);
+
+            }
+            account.setCustomer(customer);
+            account.setCreateDate(LocalDateTime.now());
+            customerRepository.save(customer);
+            accountService.save(account);
+            redirectAttributes.addFlashAttribute("success", "Đăng ký tài khoản thành công");
+            return "redirect:/user-login";
+        }
+
+        @PostMapping("/reset-page")
+        public String viewResetPassPage(@RequestParam String email, RedirectAttributes redirectAttributes) throws MessagingException {
+            try {
+                verificationCodeService.createVerificationCode(email);
+            }
+            catch (ShopApiException exception) {
+                redirectAttributes.addFlashAttribute("errorMessage", exception.getMessage());
+                return "redirect:/forgot-pass";
+            }
+            return "redirect:/reset-pass";
+        }
+
+        @GetMapping("/reset-pass")
+        public String viewResetPassPage() {
+            return "user/reset-pass";
+        }
+
+
+    @PostMapping("/reset-password")
+    public String resetPassword(@RequestParam String verificationCode,
+                                @RequestParam String newPassword,
+                                RedirectAttributes model) {
+>>>>>>> 78bffa9fdf22c5270fa57f5073d6383d635b9d88
         // Kiểm tra mã xác nhận và lấy người dùng liên kết
         Account account = verificationCodeService.verifyCode(verificationCode);
 
