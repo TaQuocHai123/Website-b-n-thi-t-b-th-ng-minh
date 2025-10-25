@@ -70,3 +70,63 @@
 
 /* Ensure copyright sits below and does not stretch columns */
 .bg3 > .container > .p-t-40 { width: 100%; margin-top: 18px }
+
+/* Green circular bullets for footer lists */
+.bg3 .footer-list {
+  list-style: none; /* keep markup clean */
+  padding-left: 0;
+  margin: 0;
+}
+.bg3 .footer-list li {
+  /* inline bullet + text, vertically centered */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px; /* keep spacing */
+  color: #dcdcdc;
+  font-size: 14px;
+}
+.bg3 .footer-list li::before {
+  /* inline white dot */
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #ffffff; /* white dot color */
+  border-radius: 50%;
+  display: inline-block;
+  flex: 0 0 8px;
+}
+
+/* Footer bottom green bar */
+.footer-bottom {
+  background: #159b2b; /* main footer green */
+  padding: 12px 0;
+  margin-top: 0; /* remove extra white gap between footer and footer-bottom */
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+.footer-bottom p {
+  margin: 0;
+  color: #ffffff; /* text on green bar */
+}
+.footer-bottom .footer-site {
+  color: #e6ffea; /* site link highlight */
+  font-weight: 600;
+  text-decoration: none;
+}
+.footer-bottom .footer-site:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Prevent content from being covered by fixed footer */
+/* removed fixed-footer body padding — footer now sits after content */
+
+/* Remove extra bottom padding on the dark footer so the green bar sits flush */
+.bg3 {
+  padding-bottom: 0 !important;
+}
+
+/* Ensure footer content still has breathing room inside container */
+.bg3 .container { padding-bottom: 12px; }

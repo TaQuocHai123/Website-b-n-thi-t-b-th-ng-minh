@@ -138,7 +138,7 @@
                             </li>
 
                             <li>
-                                <a th:href="@{/getabout}">Về chúng tôi</a>
+                                <a th:href="@{/getabout}">Giới thiệu</a>
                             </li>
 
                             <li>
@@ -239,7 +239,7 @@
                 </li>
 
                 <li>
-                    <a href="/getabout">Về chúng tôi</a>
+                    <a href="/getabout">Giới thiệu</a>
                 </li>
 
                 <li>
@@ -435,13 +435,18 @@
                 </div>
             </div>
 
-            <div class="p-t-40">
-                <p class="stext-107 cl6 txt-center">Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved
-                </p>
-            </div>
         </div>
     </footer>
+
+    <!-- Full-width footer bottom bar (does not follow when scrolling) -->
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="stext-107 txt-center">Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script>
+                <a href="/" class="footer-site">haihaupy123@gmail.com</a> - All rights reserved
+            </p>
+        </div>
+    </div>
 
 
     <script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
