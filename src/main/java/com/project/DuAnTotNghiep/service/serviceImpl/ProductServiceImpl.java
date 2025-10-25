@@ -54,8 +54,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product save(Product product) throws IOException {
-
-        if(product.getCode().trim() == "" || product.getCode() == null) {
+        // Check if code is null or empty and generate new code
+        if(product.getCode() == null || product.getCode().trim().isEmpty()) {
             Product productCurrent = productRepository.findTopByOrderByIdDesc();
             Long nextCode = (productCurrent == null) ? 1 : productCurrent.getId() + 1;
             String productCode = "SP" + String.format("%04d", nextCode);
