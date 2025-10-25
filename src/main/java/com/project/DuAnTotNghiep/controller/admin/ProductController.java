@@ -183,8 +183,16 @@ public class ProductController {
         if(product == null) {
             return "/error/404";
         }
+    if (product.getBrand() == null) product.setBrand(new Brand());
+    if (product.getCategory() == null) product.setCategory(new Category());
+    if (product.getMaterial() == null) product.setMaterial(new Material());
         model.addAttribute("action", "/admin/product-edit/save-part1");
         model.addAttribute("product", product);
+        model.addAttribute("listBrand", brandService.getAll());
+        model.addAttribute("listCategory", categoryService.getAll());
+        model.addAttribute("listMaterial", materialService.getAll());
+        model.addAttribute("listSize", sizeService.getAll());
+        model.addAttribute("listColor", colorService.findAll());
         return "admin/product-edit";
     }
 

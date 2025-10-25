@@ -2,44 +2,58 @@
 .bg3 {
   background-color: #0b0b0b;
 }
+
 .bg3 .stext-301 {
   color: #ffb400;
   font-weight: 700;
 }
+
 .footer-list {
   list-style: none;
   padding: 0;
   margin: 0;
   color: #dcdcdc;
 }
+
 .footer-list li {
   margin-bottom: 8px;
   color: #dcdcdc;
   font-size: 14px;
 }
+
 .footer-list a {
   color: #dcdcdc;
   text-decoration: none;
 }
+
 .footer-list a:hover {
   color: #ffb400;
 }
-.bg3 p, .bg3 li, .bg3 .stext-107 {
+
+.bg3 p,
+.bg3 li,
+.bg3 .stext-107 {
   color: #dcdcdc;
 }
-.bg3 .txt-center { text-align: center; }
+
+.bg3 .txt-center {
+  text-align: center;
+}
 
 @media (max-width: 767px) {
-  .bg3 .stext-301 { font-size: 18px; }
+  .bg3 .stext-301 {
+    font-size: 18px;
+  }
 }
 
 /* Make footer columns equal height and tidy */
-.bg3 .container > .row {
+.bg3 .container>.row {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
 }
-.bg3 .row > [class*="col-"] {
+
+.bg3 .row>[class*="col-"] {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -51,47 +65,65 @@
   position: relative;
   padding-bottom: 8px;
 }
+
 .bg3 .stext-301::after {
   content: "";
   display: block;
   width: 56px;
   height: 3px;
-  background: #1f7f2f; /* green accent */
+  background: #1f7f2f;
+  /* green accent */
   margin-top: 8px;
 }
 
-.bg3 .footer-list { margin-top: 8px; }
+.bg3 .footer-list {
+  margin-top: 8px;
+}
 
 /* Ensure fanpage image scales and has consistent aspect */
-.bg3 img { max-width: 100%; height: auto; display: block; }
+.bg3 img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* Slightly reduce footer link spacing and improve readability */
-.bg3 .footer-list li { line-height: 1.45; }
+.bg3 .footer-list li {
+  line-height: 1.45;
+}
 
 /* Ensure copyright sits below and does not stretch columns */
-.bg3 > .container > .p-t-40 { width: 100%; margin-top: 18px }
+.bg3>.container>.p-t-40 {
+  width: 100%;
+  margin-top: 18px
+}
 
 /* Green circular bullets for footer lists */
 .bg3 .footer-list {
-  list-style: none; /* keep markup clean */
+  list-style: none;
+  /* keep markup clean */
   padding-left: 0;
   margin: 0;
 }
+
 .bg3 .footer-list li {
   /* inline bullet + text, vertically centered */
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 8px; /* keep spacing */
+  margin-bottom: 8px;
+  /* keep spacing */
   color: #dcdcdc;
   font-size: 14px;
 }
+
 .bg3 .footer-list li::before {
   /* inline white dot */
   content: "";
   width: 8px;
   height: 8px;
-  background: #ffffff; /* white dot color */
+  background: #ffffff;
+  /* white dot color */
   border-radius: 50%;
   display: inline-block;
   flex: 0 0 8px;
@@ -99,22 +131,29 @@
 
 /* Footer bottom green bar */
 .footer-bottom {
-  background: #159b2b; /* main footer green */
+  background: #159b2b;
+  /* main footer green */
   padding: 12px 0;
-  margin-top: 0; /* remove extra white gap between footer and footer-bottom */
+  margin-top: 0;
+  /* remove extra white gap between footer and footer-bottom */
   box-sizing: border-box;
   width: 100%;
   position: relative;
 }
+
 .footer-bottom p {
   margin: 0;
-  color: #ffffff; /* text on green bar */
+  color: #ffffff;
+  /* text on green bar */
 }
+
 .footer-bottom .footer-site {
-  color: #e6ffea; /* site link highlight */
+  color: #e6ffea;
+  /* site link highlight */
   font-weight: 600;
   text-decoration: none;
 }
+
 .footer-bottom .footer-site:hover {
   color: #ffffff;
   text-decoration: underline;
@@ -129,4 +168,6 @@
 }
 
 /* Ensure footer content still has breathing room inside container */
-.bg3 .container { padding-bottom: 12px; }
+.bg3 .container {
+  padding-bottom: 12px;
+}

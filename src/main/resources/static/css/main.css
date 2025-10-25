@@ -2250,15 +2250,20 @@ input.num-product::-webkit-inner-spin-button {
 
 .stext-104 {
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  line-height: 1.466667;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 0.3px;
 }
 
 .stext-105 {
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  line-height: 1.466667;
-  letter-spacing: 1px;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 0.5px;
 }
 
 .stext-106 {
@@ -2763,7 +2768,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .bg3 {
-  background-color: #222;
+  background-color: black;
 }
 
 .bg5 {
@@ -3356,6 +3361,49 @@ input.num-product::-webkit-inner-spin-button {
   border-radius: 30px;
   font-weight: 700;
   z-index: 2;
+}
+
+/* =========================
+   Product listing tweaks
+   Make product name and price under images more visible
+   ========================= */
+.block2 .block2-txt-child1 .stext-104 {
+  font-weight: 700; /* stronger weight for product name */
+  color: #222222; /* darker color for contrast */
+  font-size: 14px; /* slightly larger for readability */
+  line-height: 1.2;
+  display: block;
+}
+
+.block2 .block2-txt-child1 .stext-104:hover {
+  color: #111111;
+}
+
+.block2 .block2-txt-child1 .stext-105 {
+  font-weight: 700; /* make price bold */
+  color: #1d1d1d; /* very dark price color */
+  font-size: 15px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* If there is an old price shown, make it slightly smaller and muted */
+.block2 .block2-txt-child1 .product-old-price {
+  font-weight: 500;
+  color: #9a9a9a;
+  font-size: 12px;
+  text-decoration: line-through;
+  margin-right: 6px;
+}
+
+/* Responsive tweak: ensure legibility on small screens */
+@media (max-width: 575px) {
+  .block2 .block2-txt-child1 .stext-104 {
+    font-size: 13px;
+  }
+  .block2 .block2-txt-child1 .stext-105 {
+    font-size: 14px;
+  }
 }
 
 /* Remove unwanted green padding/background for hero sections where we use an <img> */

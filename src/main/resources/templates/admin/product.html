@@ -70,7 +70,7 @@
     <table class="table my-3">
         <thead class="thead-light">
         <tr>
-            <th scope="col">Mã sản phẩm
+            <th scope="col" style="min-width: 120px;">Mã sản phẩm
                 <a th:href="@{/admin/product-all(page=0, sort=${sortField == 'id' && sortDirection == 'asc' ? 'id,desc' : 'id,asc'}, maSanPham=${maSanPham}, tenSanPham=${tenSanPham}, nhanHang=${nhanHang}, chatLieu=${chatLieu}, theLoai=${theLoai}, trangThai=${trangThai})}" class="sort-link">↑</a>
                 <a th:href="@{/admin/product-all(page=0, sort=${sortField == 'id' && sortDirection == 'desc' ? 'id,asc' : 'id,desc'}, maSanPham=${maSanPham}, tenSanPham=${tenSanPham}, nhanHang=${nhanHang}, chatLieu=${chatLieu}, theLoai=${theLoai}, trangThai=${trangThai})}" class="sort-link">↓</a>
             </th>
@@ -87,7 +87,7 @@
             <th scope="col">Thể loại
             </th>
             <th scope="col">Trạng thái</th>
-            <th scope="col"></th>
+            <th scope="col" style="min-width: 160px;">Thao tác</th>
         </tr>
         </thead>
         <tbody>
@@ -106,8 +106,14 @@
                 <span th:case="2">Ngừng bán</span>
             </span>
             </td>
-
-           
+            <td class="text-right">
+                <a th:href="@{'/admin/chi-tiet-san-pham/' + ${item.maSanPham}}" class="btn btn-sm btn-primary mr-1">
+                    <i class="fas fa-edit"></i> Chi tiết
+                </a>
+                <button class="btn btn-sm btn-danger delete-btn" th:attr="data-product-id=${item.idSanPham}">
+                    <i class="fas fa-trash"></i> Xóa
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -137,11 +143,11 @@
 
     </div>
     <script th:inline="javascript">
-        $('#delete-btn').on('click', function () {
+        $('.delete-btn').on('click', function () {
             Swal.fire({
                 title: "Xác nhận?",
                 text: `Bạn chắc chắn muốn xóa sản phẩm này`,
-                icon: "warning",
+                icon: "warning", 
                 showCancelButton: true,
                 cancelButtonText: 'Hủy',
                 confirmButtonText: 'Xác nhận',
@@ -153,7 +159,7 @@
                     window.location.href = url
                 }
             });
-        })
+        });
     </script>
 </div>
 </body>

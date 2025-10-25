@@ -22,11 +22,9 @@
                 </a>
             </div>
             <div class="MuiBox-root jss1136">
-                <!--                <a class="btn btn-outline-danger" id="delete-btn" th:href="@{'/admin/product-delete/' + ${product.id}}">-->
-                <!--                    <span class="">Xoá-->
-                <!--                    </span>-->
-                <!--                </a>-->
-
+                <a class="btn btn-outline-primary" th:href="@{'/admin/product-edit/' + ${product.code}}">
+                    <i class="fas fa-edit"></i> Sửa sản phẩm
+                </a>
             </div>
         </div>
         <div class="title-box">
