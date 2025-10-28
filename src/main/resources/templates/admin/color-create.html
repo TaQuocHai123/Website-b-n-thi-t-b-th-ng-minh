@@ -15,8 +15,7 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label>Mã màu</label>
-          <span class="red_require"> *</span>
-          <input type="text" class="form-control" th:field="*{code}" placeholder="Nhập mã màu">
+          <input type="text" class="form-control" th:field="*{code}" placeholder="Để trống để hệ thống tự sinh mã">
           <span class="error"></span>
         </div>
         <div class="form-group col-md-6">
@@ -42,7 +41,6 @@
         formGroupSelector: '.form-group',
         errorSelector: '.error',
         rules: [
-          Validator.isRequired('#code', 'Vui lòng nhập mã màu'),
           Validator.isRequired('#name', 'Vui lòng nhập tên màu'),
           Validator.maxLength('#name', 30),
           Validator.maxLength('#code', 20),

@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -103,8 +103,14 @@ public class ColorController {
     }
 
     @GetMapping("/color-delete/{id}")
-    public String delete(@PathVariable("id") Long id, ModelMap modelMap){
-        colorService.delete(id);
+    public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        try {
+            Color color = colorService.findById(id).orElseThrow(() -> new RuntimeException("Không tìm thấy màu"));
+            colorService.delete(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Xóa màu " + color.getName() + " thành công");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
         return "redirect:/admin/color-list";
     }
 }

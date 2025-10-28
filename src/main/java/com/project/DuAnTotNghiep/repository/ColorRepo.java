@@ -10,9 +10,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ColorRepo extends JpaRepository<Color,Long> {
+    Color findFirstByOrderByIdDesc();
+    
     @Query(value = "select distinct c from Color c join ProductDetail pd on c.id = pd.color.id where pd.product = :product")
     List<Color> findColorsByProduct(Product product);
 
@@ -20,6 +23,8 @@ public interface ColorRepo extends JpaRepository<Color,Long> {
     List<Color> findColorsByProductAndSize(Product product, Size size);
 
     boolean existsByCode(String code);
+
+    Optional<Color> findByCode(String code);
 
     List<Color> findAllByDeleteFlagFalse();
     Page<Color> findAllByDeleteFlagFalse(Pageable pageable);

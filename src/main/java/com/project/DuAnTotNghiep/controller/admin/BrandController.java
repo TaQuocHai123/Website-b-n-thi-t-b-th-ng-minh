@@ -1,8 +1,6 @@
 package com.project.DuAnTotNghiep.controller.admin;
 
-import com.project.DuAnTotNghiep.dto.Brand.BrandDto;
 import com.project.DuAnTotNghiep.entity.Brand;
-import com.project.DuAnTotNghiep.entity.Color;
 import com.project.DuAnTotNghiep.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -104,9 +102,14 @@ public class BrandController {
     }
 
     @GetMapping("/brand-delete/{id}")
-    public String delete(@PathVariable("id") Long id, ModelMap modelMap){
-        brandService.delete(id);
+    public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        try {
+            Brand brand = brandService.findById(id).orElseThrow(() -> new RuntimeException("Không tìm thấy nhãn hàng"));
+            brandService.delete(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Xóa nhãn hàng " + brand.getName() + " thành công");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
         return "redirect:/admin/brand-all";
     }
-
 }

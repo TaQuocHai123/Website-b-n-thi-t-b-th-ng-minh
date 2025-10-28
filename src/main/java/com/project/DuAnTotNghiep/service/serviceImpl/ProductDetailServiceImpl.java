@@ -46,8 +46,22 @@ private ProductDetailRepository productDetailRepository;
 
     @Override
     public ProductDetail getProductDetailByProductCode(String code){
-        Product product = productRepository.findByCode(code);
-
+        List<Product> products = productRepository.findByCode(code);
+        Product product = null;
+        if (products != null && !products.isEmpty()) {
+            for (Product p : products) {
+                if (!p.isDeleteFlag()) {
+                    product = p;
+                    break;
+                }
+            }
+            if (product == null) {
+                product = products.get(0);
+            }
+        }
+        if (product == null) {
+            throw new NotFoundException("Product not found with code: " + code);
+        }
         return productDetailRepository.getProductDetailByProduct(product);
 
     }

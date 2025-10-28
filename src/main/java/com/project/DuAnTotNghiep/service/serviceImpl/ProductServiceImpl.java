@@ -87,10 +87,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductByCode(String code) {
-        Product product = productRepository.findByCode(code);
-        if(product != null) {
-
-            return product;
+        List<Product> products = productRepository.findByCode(code);
+        if (products != null && !products.isEmpty()) {
+            // prefer a non-deleted product
+            for (Product p : products) {
+                if (!p.isDeleteFlag()) {
+                    return p;
+                }
+            }
+            // fallback to first if all are deleted
+            return products.get(0);
         }
         return null;
     }

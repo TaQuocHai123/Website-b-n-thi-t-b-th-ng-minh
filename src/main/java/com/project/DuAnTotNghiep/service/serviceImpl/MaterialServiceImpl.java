@@ -24,7 +24,7 @@ public class MaterialServiceImpl implements MaterialService {
 
     @Override
     public Page<Material> getAllMaterial(Pageable pageable) {
-        return materialRepository.findAll(pageable);
+        return materialRepository.findAllByDeleteFlagFalse(pageable);
     }
 
     @Override
@@ -34,7 +34,13 @@ public class MaterialServiceImpl implements MaterialService {
 
     @Override
     public Material createMaterial(Material material) {
-        if(materialRepository                                                                                                                                                                           .existsByCode(material.getCode())) {
+        if(material.getCode() == null || material.getCode().trim().isEmpty()) {
+            // Generate new code if not provided
+            Material lastMaterial = materialRepository.findFirstByOrderByIdDesc();
+            Long nextId = (lastMaterial == null) ? 1L : lastMaterial.getId() + 1;
+            String materialCode = "CL" + String.format("%04d", nextId);
+            material.setCode(materialCode);
+        } else if(materialRepository.existsByCode(material.getCode())) {
             throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã chất liệu " + material.getCode() + " đã tồn tại");
         }
         material.setDeleteFlag(false);
@@ -55,19 +61,30 @@ public class MaterialServiceImpl implements MaterialService {
 
     @Override
     public void delete(Long id) {
-        Material material = materialRepository.findById(id).orElseThrow(null);
+        Material material = materialRepository.findById(id)
+            .orElseThrow(() -> new NotFoundException("Không tìm thấy chất liệu với id " + id));
+            
+        if (material.getDeleteFlag()) {
+            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Chất liệu này đã bị xóa");
+        }
+        
         material.setDeleteFlag(true);
         materialRepository.save(material);
     }
 
     @Override
     public Optional<Material> findById(Long id) {
-        return materialRepository.findById(id);
+        return materialRepository.findById(id).map(material -> {
+            if (material.getDeleteFlag() == null || !material.getDeleteFlag()) {
+                return material;
+            }
+            return null;
+        });
     }
 
     @Override
     public List<Material> getAll() {
-        return materialRepository.findAll();
+        return materialRepository.findAllByDeleteFlagFalse();
     }
 
     @Override

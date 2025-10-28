@@ -17,8 +17,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Mã nhãn hàng</label>
-                    <span class="red_require"> *</span>
-                    <input type="text" class="form-control" th:field="*{code}" placeholder="Nhập mã nhãn hàng">
+                    <input type="text" class="form-control" th:field="*{code}" placeholder="Để trống để hệ thống tự sinh mã">
                     <span class="error"></span>
 
                 </div>
@@ -45,7 +44,6 @@
                 formGroupSelector: '.form-group',
                 errorSelector: '.error',
                 rules: [
-                    Validator.isRequired('#code', 'Vui lòng nhập mã nhãn hàng'),
                     Validator.isRequired('#name', 'Vui lòng nhập tên nhãn hàng'),
                     Validator.maxLength('#name', 40),
                     Validator.maxLength('#code', 20),

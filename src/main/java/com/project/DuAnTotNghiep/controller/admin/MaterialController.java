@@ -1,9 +1,7 @@
 package com.project.DuAnTotNghiep.controller.admin;
 
-import com.project.DuAnTotNghiep.entity.Brand;
 import com.project.DuAnTotNghiep.entity.Material;
 import com.project.DuAnTotNghiep.exception.NotFoundException;
-import com.project.DuAnTotNghiep.service.BrandService;
 import com.project.DuAnTotNghiep.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -103,10 +101,16 @@ public class MaterialController {
             return "404";
         }
     }
-
+    
     @GetMapping("/material-delete/{id}")
-    public String delete(@PathVariable("id") Long id, ModelMap modelMap){
-        materialService.delete(id);
+    public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        try {
+            Material material = materialService.findById(id).orElseThrow(() -> new RuntimeException("Không tìm thấy chất liệu"));
+            materialService.delete(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Xóa chất liệu " + material.getName() + " thành công");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
         return "redirect:/admin/material-all";
     }
 }

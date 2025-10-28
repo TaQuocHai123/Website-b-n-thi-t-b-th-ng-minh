@@ -32,8 +32,12 @@
       <td th:text="${items.code}">Mark</td>
       <td th:text="${items.name}"></td>
       <td>
-<!--        <a th:data-link="'/admin/material-delete/'+${items.id}" class="delete-btn cursor-pointer"><i class="fa fa-trash-o"></i></a>-->
-        <a th:href="@{'/admin/material-detail/'+${items.id}}"><i class="fa ti-pencil-alt"></i></a>
+        <a href="javascript:void(0)" class="delete-btn cursor-pointer" th:data-link="@{'/admin/material-delete/'+${items.id}}">
+          <i class="fa fa-trash-o"></i>
+        </a>
+        <a th:href="@{'/admin/material-detail/'+${items.id}}" class="ml-2">
+          <i class="fa ti-pencil-alt"></i>
+        </a>
       </td>
     </tr>
     </tbody>

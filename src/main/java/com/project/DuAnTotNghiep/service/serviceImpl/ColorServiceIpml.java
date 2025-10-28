@@ -46,8 +46,26 @@ public class ColorServiceIpml implements ColorService {
 
     @Override
     public Color createColor(Color color) {
-        if(colorRepo.existsByCode(color.getCode())) {
-            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã màu " + color.getCode() + " đã tồn tại");
+        if (color.getCode() == null || color.getCode().trim().isEmpty()) {
+            // Generate new code if not provided
+            Color lastColor = colorRepo.findFirstByOrderByIdDesc();
+            Long nextId = (lastColor == null) ? 1L : lastColor.getId() + 1;
+            String colorCode = "MS" + String.format("%04d", nextId);
+            color.setCode(colorCode);
+        } else {
+            String code = color.getCode().trim();
+            Optional<Color> existing = colorRepo.findByCode(code);
+            if (existing.isPresent()) {
+                Color ex = existing.get();
+                // If existed but was soft-deleted, restore it and update name
+                if (ex.getDeleteFlag() != null && ex.getDeleteFlag()) {
+                    ex.setDeleteFlag(false);
+                    ex.setName(color.getName());
+                    return colorRepo.save(ex);
+                }
+                throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã màu " + code + " đã tồn tại");
+            }
+            color.setCode(code);
         }
         color.setDeleteFlag(false);
         return colorRepo.save(color);
@@ -62,12 +80,17 @@ public class ColorServiceIpml implements ColorService {
 
     @Override
     public List<Color> findAll() {
-        return colorRepo.findAll();
+        return colorRepo.findAllByDeleteFlagFalse();
     }
 
     @Override
     public Optional<Color> findById(Long id) {
-        return colorRepo.findById(id);
+            return colorRepo.findById(id).map(color -> {
+                if (color.getDeleteFlag() == null || !color.getDeleteFlag()) {
+                    return color;
+                }
+                return null;
+            });
     }
 
     @Override
@@ -83,7 +106,7 @@ public class ColorServiceIpml implements ColorService {
 
     @Override
     public Page<Color> findAll(Pageable pageable) {
-        return colorRepo.findAll(pageable);
+        return colorRepo.findAllByDeleteFlagFalse(pageable);
     }
 
     @Override
@@ -101,11 +124,22 @@ public class ColorServiceIpml implements ColorService {
 
     @Override
     public ColorDto createColorApi(ColorDto colorDto) {
-        if(colorRepo.existsByCode(colorDto.getCode())) {
+        if (colorDto.getCode() == null || colorDto.getCode().trim().isEmpty()) {
+            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã màu không được để trống");
+        }
+        String code = colorDto.getCode().trim();
+        Optional<Color> existing = colorRepo.findByCode(code);
+        if (existing.isPresent()) {
+            Color ex = existing.get();
+            if (ex.getDeleteFlag() != null && ex.getDeleteFlag()) {
+                ex.setDeleteFlag(false);
+                ex.setName(colorDto.getName());
+                Color saved = colorRepo.save(ex);
+                return new ColorDto(saved.getId(), saved.getCode(), saved.getName());
+            }
             throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã màu đã tồn tại");
         }
-
-        Color color = new Color(null, colorDto.getCode(), colorDto.getName(), false);
+        Color color = new Color(null, code, colorDto.getName(), false);
         Color colorNew = colorRepo.save(color);
         return new ColorDto(colorNew.getId(), colorNew.getCode(), colorNew.getName());
     }

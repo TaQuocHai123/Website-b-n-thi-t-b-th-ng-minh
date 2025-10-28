@@ -24,17 +24,31 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public Page<Brand> getAllBrand(Pageable pageable) {
-        return brandRepository.findAll(pageable);
+        return brandRepository.findAllByDeleteFlagFalse(pageable);
     }
 
     @Override
     public Brand createBrand(Brand brand) {
-
-        if(brand.getCode() == null) {
-            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Vui lòng nhập mã nhãn hàng");
-        }
-        if(brandRepository.existsByCode(brand.getCode().trim())) {
-            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã nhãn hàng đã tồn tại");
+        if(brand.getCode() == null || brand.getCode().trim().isEmpty()) {
+            // Generate new code if not provided
+            Brand lastBrand = brandRepository.findFirstByOrderByIdDesc();
+            Long nextId = (lastBrand == null) ? 1L : lastBrand.getId() + 1;
+            String brandCode = "NH" + String.format("%04d", nextId);
+            brand.setCode(brandCode);
+        } else {
+            String code = brand.getCode().trim();
+            Optional<Brand> existing = brandRepository.findByCode(code);
+            if (existing.isPresent()) {
+                Brand ex = existing.get();
+                // If existed but was soft-deleted, restore it and update name
+                if (ex.getDeleteFlag() != null && ex.getDeleteFlag()) {
+                    ex.setDeleteFlag(false);
+                    ex.setName(brand.getName());
+                    return save(ex);
+                }
+                throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã nhãn hàng " + code + " đã tồn tại");
+            }
+            brand.setCode(code);
         }
         brand.setStatus(1);
         brand.setDeleteFlag(false);
@@ -46,7 +60,14 @@ public class BrandServiceImpl implements BrandService {
         if(brand.getCode() == null) {
             throw new ShopApiException(HttpStatus.BAD_REQUEST, "Vui lòng nhập mã nhãn hàng");
         }
-        Brand existingBrand = brandRepository.findById(brand.getId()).orElseThrow(null);
+
+        Brand existingBrand = brandRepository.findById(brand.getId())
+            .orElseThrow(() -> new ShopApiException(HttpStatus.NOT_FOUND, "Không tìm thấy nhãn hàng với id " + brand.getId()));
+
+        if (existingBrand.getDeleteFlag()) {
+            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Nhãn hàng này đã bị xóa");
+        }
+
         if(!existingBrand.getCode().equals(brand.getCode())) {
             if(brandRepository.existsByCode(brand.getCode())) {
                 throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã nhãn hàng " + brand.getCode() + " đã tồn tại");
@@ -64,19 +85,30 @@ public class BrandServiceImpl implements BrandService {
 
     @Override
     public void delete(Long id) {
-        Brand brand = brandRepository.findById(id).orElseThrow(null);
+        Brand brand = brandRepository.findById(id)
+            .orElseThrow(() -> new ShopApiException(HttpStatus.NOT_FOUND, "Không tìm thấy nhãn hàng với id " + id));
+
+        if (brand.getDeleteFlag()) {
+            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Nhãn hàng này đã bị xóa");
+        }
+
         brand.setDeleteFlag(true);
         brandRepository.save(brand);
     }
 
     @Override
     public Optional<Brand> findById(Long id) {
-        return brandRepository.findById(id);
+        return brandRepository.findById(id).map(brand -> {
+            if (brand.getDeleteFlag() == null || !brand.getDeleteFlag()) {
+                return brand;
+            }
+            return null;
+        });
     }
 
     @Override
     public List<Brand> getAll() {
-        return brandRepository.findAll();
+        return brandRepository.findAllByDeleteFlagFalse();
     }
 
     @Override

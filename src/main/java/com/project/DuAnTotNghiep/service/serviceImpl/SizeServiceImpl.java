@@ -45,7 +45,7 @@ public class SizeServiceImpl implements SizeService {
     @Override
     public Size createSize(Size size) {
         if(sizeRepository.existsByCode(size.getCode())) {
-            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã bh " + size.getCode() + " đã tồn tại");
+            throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã bảo hành " + size.getCode() + " đã tồn tại");
         }
 
         size.setDeleteFlag(false);
@@ -57,7 +57,7 @@ public class SizeServiceImpl implements SizeService {
         Size existingSize = sizeRepository.findById(size.getId()).orElseThrow(() -> new NotFoundException("Không tìm thấy cỡ có mã " + size.getCode()) );
         if(!existingSize.getCode().equals(size.getCode())) {
             if(sizeRepository.existsByCode(size.getCode())) {
-                throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã bh " + size.getCode() + " đã tồn tại");
+                throw new ShopApiException(HttpStatus.BAD_REQUEST, "Mã bảo hành " + size.getCode() + " đã tồn tại");
             }
         }
         size.setDeleteFlag(false);
