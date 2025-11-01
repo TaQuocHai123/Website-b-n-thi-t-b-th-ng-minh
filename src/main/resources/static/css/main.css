@@ -241,7 +241,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*---------------------------------------------*/
 .right-top-bar a {
   font-family: 'Poppins', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
 
   height: 100%;
@@ -370,7 +370,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .main-menu>li>a {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;
@@ -425,7 +425,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .sub-menu a {
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   color: #555;
 

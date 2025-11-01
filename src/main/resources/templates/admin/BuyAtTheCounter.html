@@ -167,20 +167,36 @@
                                 </button>
 </div>
 
-<div class="qr-payment-container z-10 bg-white p-x-20 pt-20 pb-10 rounded-lg shadow-md absolute left-1/4 top-1/4 -translate-y-1/4 hidden">
-    <img src="" id="qr-payment" width="400" height="300" class="mb-4">
-    <button type="button" class="close-modal-payment absolute top-1 right-1 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-            data-modal-hide="crypto-modal">
-        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-             fill="none" viewBox="0 0 14 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                  stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-        </svg>
-        <span class="sr-only">Close modal</span>
-    </button>
-    <div class="flex justify-center">
-        <button type="button" class="close-modal-payment outline outline-1 outline-blue-700 hover:outline-blue-800 font-medium rounded-lg text-sm px-5 py-2 me-2 mb-2 dark:outline-blue-600 dark:hover:outline-blue-700">Hủy</button>
-        <button id="confirm-pay" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">XÁC NHẬN ĐÃ THANH TOÁN</button>
+<div class="qr-payment-container fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-8 rounded-lg shadow-xl max-w-xl w-full mx-4 relative">
+        <div class="max-h-[90vh] overflow-y-auto">
+            <!-- QR Image -->
+            <img src="" id="qr-payment" width="300" height="300" class="mb-6 mx-auto">
+            
+            <!-- Account Info -->
+            <div class="text-center mb-8">
+                <h3 id="qr-account-name" class="text-2xl font-bold mb-2">TA QUOC HAI</h3>
+                <p id="qr-alias" class="text-lg text-gray-600 mb-2">Alias 0364023659</p>
+                <p id="qr-bank" class="text-gray-600">VietinBank CN PHU YEN - PGD TAY HOA</p>
+            </div>
+
+            <!-- Close Button -->
+            <button type="button" class="close-modal-payment absolute top-4 right-4 text-gray-400 bg-white hover:bg-gray-100 hover:text-gray-900 rounded-full text-sm p-2 inline-flex items-center border border-gray-200 shadow-sm"
+                    data-modal-hide="crypto-modal">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                     fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-center space-x-4 mt-6">
+                <button type="button" class="close-modal-payment w-32 px-6 py-3 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:ring-2 focus:ring-gray-200">Hủy</button>
+                <button id="confirm-pay" type="button" class="w-48 px-6 py-3 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">XÁC NHẬN ĐÃ THANH TOÁN</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -1519,8 +1535,34 @@
 
                     // Xử lý khi pt thanh toán là chuyển khoản
                     if (paymentMethodId == 3) {
+                        const qrDetails = {
+                            accountName: 'TA QUOC HAI',
+                            accountNumber: '0364023659',
+                            bankName: 'VietinBank CN PHU YEN - PGD TAY HOA',
+                            // Try different bank codes until we find one that works
+                            bankCode: '970415', // VietinBank's bank code
+                        };
+
+                        // Show the QR modal
                         $(".qr-payment-container").removeClass('hidden');
-                        $(".qr-payment-container").find('img').attr("src", `https://img.vietqr.io/image/TCB-19037422831012-compact2.jpg?amount=${pay.requireMoney}&addInfo=Thanh%20%20toan%20don%20hang&accountName=Nguyen%20Ngoc%20Sang`);
+                        $('#overlay').show();
+
+                        // Format the QR URL (trying multiple formats)
+                        const amount = pay.requireMoney || 0;
+                        const addInfo = encodeURIComponent('Thanh toan don hang');
+                        const accountName = encodeURIComponent(qrDetails.accountName);
+                        
+                        // Build VietQR URL with bank code
+                        const qrUrl = `https://img.vietqr.io/image/${qrDetails.bankCode}-${qrDetails.accountNumber}-compact2.jpg?amount=${amount}&addInfo=${addInfo}&accountName=${accountName}`;
+                        
+                        console.log('Generated QR URL:', qrUrl); // For debugging
+                        
+                        // Set QR image and account details
+                        $("#qr-payment").attr("src", qrUrl);
+                        $("#qr-account-name").text(qrDetails.accountName);
+                        $("#qr-alias").text('Alias ' + qrDetails.accountNumber);
+                        $("#qr-bank").text(qrDetails.bankName);
+                        
                         dataSendIfChuyenKhoan = dataSend;
                     } else {
                         // Execute the AJAX request directly for other payment methods
